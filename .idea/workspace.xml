@@ -1,29 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="" />
+    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Sudark">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/LevelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;superwfox&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/superwfox/Courier.git&quot;,
+    &quot;accountId&quot;: &quot;60d603bc-d834-4e98-bafa-a97ff12be7a9&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2tlOebP3uyHdzXcSvxLbTFlWyQ2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sudark/Desktop/plugims/courier-1.0-SNAPSHOT.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.16208392&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.44827586&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Courier package" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="C:\Users\Sudark\IdeaProjects\Courier" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -40,10 +115,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740923290930</updated>
+      <workItem from="1740923291898" duration="102000" />
+      <workItem from="1740923428989" duration="55000" />
+      <workItem from="1740923658755" duration="398000" />
+      <workItem from="1740924089432" duration="5328000" />
+      <workItem from="1740930219581" duration="832000" />
+      <workItem from="1740981044343" duration="543000" />
+      <workItem from="1740981619713" duration="39000" />
+      <workItem from="1740981690678" duration="967000" />
+      <workItem from="1740983577648" duration="4113000" />
+      <workItem from="1740988015368" duration="3984000" />
     </task>
+    <task id="LOCAL-00001" summary="Sudark">
+      <option name="closed" value="true" />
+      <created>1740931017241</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740931017241</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sudark" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sudark" />
   </component>
 </project>

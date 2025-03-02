@@ -1,10 +1,12 @@
 package sudark.courier;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.java_websocket.client.WebSocketClient;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class Courier extends JavaPlugin {
 
@@ -18,6 +20,10 @@ public final class Courier extends JavaPlugin {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
+        AllowList.checkFile();
+
+        Bukkit.getPluginManager().registerEvents(new EventListener(), this);
 
     }
 

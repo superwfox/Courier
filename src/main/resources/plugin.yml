@@ -1,0 +1,4 @@
+name: Courier
+version: '${project.version}'
+main: sudark.courier.Courier
+api-version: '1.21'
