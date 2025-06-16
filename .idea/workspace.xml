@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Sudark">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/LevelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Picture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/pixel.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/LevelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +53,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Maven.Courier [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Courier [package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Sudark/Desktop/plugims/courier-1.0-SNAPSHOT.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -67,6 +71,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sudark\IdeaProjects\Courier\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Courier package" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -124,7 +133,87 @@
       <workItem from="1740981619713" duration="39000" />
       <workItem from="1740981690678" duration="967000" />
       <workItem from="1740983577648" duration="4113000" />
-      <workItem from="1740988015368" duration="3984000" />
+      <workItem from="1740988015368" duration="5485000" />
+      <workItem from="1741048298282" duration="376000" />
+      <workItem from="1741049374790" duration="427000" />
+      <workItem from="1741051048040" duration="26000" />
+      <workItem from="1741051424447" duration="14000" />
+      <workItem from="1741055203042" duration="16000" />
+      <workItem from="1741084390749" duration="887000" />
+      <workItem from="1741243373724" duration="18000" />
+      <workItem from="1741243565454" duration="23000" />
+      <workItem from="1741244381122" duration="12000" />
+      <workItem from="1741245211983" duration="52000" />
+      <workItem from="1741245274959" duration="19000" />
+      <workItem from="1741245301295" duration="5000" />
+      <workItem from="1741493866784" duration="89000" />
+      <workItem from="1741505274367" duration="26000" />
+      <workItem from="1741511195827" duration="5000" />
+      <workItem from="1741511225178" duration="2000" />
+      <workItem from="1741512686251" duration="19000" />
+      <workItem from="1741535906234" duration="10000" />
+      <workItem from="1741536090821" duration="14000" />
+      <workItem from="1741536114139" duration="140000" />
+      <workItem from="1741538529883" duration="37000" />
+      <workItem from="1741701608498" duration="775000" />
+      <workItem from="1741761976907" duration="54000" />
+      <workItem from="1741762048339" duration="334000" />
+      <workItem from="1741860271129" duration="33000" />
+      <workItem from="1741860865896" duration="24000" />
+      <workItem from="1741860908988" duration="11000" />
+      <workItem from="1741861295067" duration="3000" />
+      <workItem from="1744552796111" duration="75000" />
+      <workItem from="1744552897795" duration="9000" />
+      <workItem from="1744553352294" duration="113000" />
+      <workItem from="1744553748766" duration="170000" />
+      <workItem from="1744554395312" duration="25000" />
+      <workItem from="1744554605094" duration="5000" />
+      <workItem from="1744604202462" duration="552000" />
+      <workItem from="1744617354141" duration="1647000" />
+      <workItem from="1744619180333" duration="3271000" />
+      <workItem from="1744623180934" duration="1857000" />
+      <workItem from="1744698805668" duration="2849000" />
+      <workItem from="1744711860614" duration="3062000" />
+      <workItem from="1744717431926" duration="3000" />
+      <workItem from="1744817595612" duration="36000" />
+      <workItem from="1744941459121" duration="148000" />
+      <workItem from="1746189905779" duration="189000" />
+      <workItem from="1746193678429" duration="6000" />
+      <workItem from="1746193715027" duration="6000" />
+      <workItem from="1746268835667" duration="230000" />
+      <workItem from="1746269267294" duration="35000" />
+      <workItem from="1746278243165" duration="416000" />
+      <workItem from="1746344119026" duration="17000" />
+      <workItem from="1748074853197" duration="44000" />
+      <workItem from="1748075540849" duration="514000" />
+      <workItem from="1748077986834" duration="399000" />
+      <workItem from="1748078422007" duration="1647000" />
+      <workItem from="1748348146469" duration="1077000" />
+      <workItem from="1748351156961" duration="2000" />
+      <workItem from="1748351915530" duration="794000" />
+      <workItem from="1748414159273" duration="2000" />
+      <workItem from="1748437162355" duration="1410000" />
+      <workItem from="1748441313375" duration="5000" />
+      <workItem from="1748614825620" duration="2475000" />
+      <workItem from="1748680459798" duration="102000" />
+      <workItem from="1748682542677" duration="13000" />
+      <workItem from="1748684034236" duration="74000" />
+      <workItem from="1748684900319" duration="5000" />
+      <workItem from="1748848231590" duration="1790000" />
+      <workItem from="1748865397941" duration="4000" />
+      <workItem from="1748956549168" duration="806000" />
+      <workItem from="1749211975245" duration="102000" />
+      <workItem from="1749212085787" duration="20000" />
+      <workItem from="1749212111995" duration="334000" />
+      <workItem from="1749214461027" duration="393000" />
+      <workItem from="1749216215773" duration="698000" />
+      <workItem from="1749217096327" duration="678000" />
+      <workItem from="1749218111449" duration="1216000" />
+      <workItem from="1749219428741" duration="643000" />
+      <workItem from="1749278147631" duration="7000" />
+      <workItem from="1749565435365" duration="914000" />
+      <workItem from="1749615305766" duration="21000" />
+      <workItem from="1749649928971" duration="58000" />
     </task>
     <task id="LOCAL-00001" summary="Sudark">
       <option name="closed" value="true" />
@@ -134,7 +223,23 @@
       <option name="project" value="LOCAL" />
       <updated>1740931017241</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Sudark">
+      <option name="closed" value="true" />
+      <created>1740992332394</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740992332394</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <option name="closed" value="true" />
+      <created>1740992570757</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740992570757</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +247,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sudark" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sudark" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java" />
   </component>
 </project>

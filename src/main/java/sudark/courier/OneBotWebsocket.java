@@ -8,26 +8,32 @@ import org.bukkit.entity.Player;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
+
+import static sudark.courier.AllowList.*;
 
 public class OneBotWebsocket extends WebSocketClient {
+
+    AllowList al = new AllowList();
 
     public OneBotWebsocket(URI serverUri) {
         super(serverUri);
     }
 
-    public void sendG(String message) {
+    public static void sendG(String message) {
         JSONObject connected = new JSONObject();
         JSONObject connectedi = new JSONObject();
-        connectedi.put("group_id", "571591801");
+        connectedi.put("group_id", QQGroup);
         connectedi.put("message", message);
         connectedi.put("auto_escape", "false");
         connected.put("action", "send_group_msg");
         connected.put("params", connectedi);
 
         try {
-            this.send(connected.toString());
+            Courier.client.send(connected.toString());
         } catch (Exception var5) {
             Exception e = var5;
             e.printStackTrace();
@@ -88,7 +94,7 @@ public class OneBotWebsocket extends WebSocketClient {
         msg.add(typeo);
         msg.add(typeo2);
         inner.put("messages", msg);
-        inner.put("group_id", "571591801");
+        inner.put("group_id", QQGroup);
         inner.put("auto_escape", "false");
         json.put("action", "send_group_forward_msg");
         json.put("params", inner);
@@ -102,35 +108,11 @@ public class OneBotWebsocket extends WebSocketClient {
 
     }
 
-    public void sendD() {
-        JSONObject json = new JSONObject();
-        JSONObject inner = new JSONObject();
-        JSONArray msg = new JSONArray();
-        JSONObject qq = new JSONObject();
-        JSONObject type = new JSONObject();
-        qq.put("file", "");
-        type.put("data", qq);
-        type.put("type", "image");
-        msg.add(type);
-        inner.put("group_id", "571591801");
-        inner.put("message", msg);
-        json.put("params", inner);
-        json.put("action", "send_group_msg");
-
-        try {
-            this.send(json.toString());
-        } catch (Exception var7) {
-            Exception e = var7;
-            e.printStackTrace();
-        }
-
-    }
-
     public void setb() {
         JSONObject json = new JSONObject();
         JSONObject inner = new JSONObject();
         json.put("action", "set_group_whole_ban");
-        inner.put("group_id", "571591801");
+        inner.put("group_id", QQGroup);
         inner.put("enable", "true");
         json.put("params", inner);
 
@@ -147,7 +129,7 @@ public class OneBotWebsocket extends WebSocketClient {
         JSONObject json = new JSONObject();
         JSONObject inner = new JSONObject();
         json.put("action", "set_group_whole_ban");
-        inner.put("group_id", "571591801");
+        inner.put("group_id", QQGroup);
         inner.put("enable", "false");
         json.put("params", inner);
 
@@ -188,7 +170,7 @@ public class OneBotWebsocket extends WebSocketClient {
         type.put("data", qq);
         type.put("type", "at");
         msg.add(type);
-        inner.put("group_id", "571591801");
+        inner.put("group_id", QQGroup);
         inner.put("message", msg);
         json.put("params", inner);
 
@@ -196,6 +178,30 @@ public class OneBotWebsocket extends WebSocketClient {
             this.send(json.toString());
         } catch (Exception var8) {
             Exception e = var8;
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void sendD(String base) {
+        JSONObject json = new JSONObject();
+        JSONObject inner = new JSONObject();
+        JSONArray msg = new JSONArray();
+        JSONObject qq = new JSONObject();
+        JSONObject type = new JSONObject();
+        qq.put("file", "base64://" +base);
+        type.put("data", qq);
+        type.put("type", "image");
+        msg.add(type);
+        inner.put("group_id", QQGroup);
+        inner.put("message", msg);
+        json.put("params", inner);
+        json.put("action", "send_group_msg");
+
+        try {
+            Courier.client.send(json.toString());
+        } catch (Exception var7) {
+            Exception e = var7;
             e.printStackTrace();
         }
 
@@ -215,7 +221,7 @@ public class OneBotWebsocket extends WebSocketClient {
         JSONObject json = JSONObject.fromObject(s);
 
         //确认为群聊
-        if (json.containsKey("group_id") && json.getString("group_id").equals("1007142639")) {
+        if (json.containsKey("group_id") && json.getString("group_id").equals(QQGroup)) {
             //讨论通知和消息
             switch (json.getString("post_type")) {
                 case "message":
@@ -230,13 +236,14 @@ public class OneBotWebsocket extends WebSocketClient {
 
                     //确定消息内容 msg
                     String msg = "";
-                    JSONArray message = json.getJSONArray("raw_message");
+                    JSONArray message = json.getJSONArray("message");
                     for (int i = 0; i < message.size(); i++) {
                         JSONObject obj = message.getJSONObject(i);
                         String type = obj.optString("type");
                         switch (type) {
                             case "text":
                                 msg += obj.getJSONObject("data").getString("text");
+                                break;
                             case "face":
                                 msg += "[§b表情§f]";
                                 break;
@@ -258,9 +265,14 @@ public class OneBotWebsocket extends WebSocketClient {
                         }
                     }
 
+                    if (msg.startsWith("c/") && qq.equals(superUser)) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), msg.substring(2));
+                        return;
+                    }
+
                     if (msg.startsWith("绑定 ")) {
                         try {
-                            AllowList.checkList(qq, msg);
+                            al.checkList(qq, msg.substring(3), this);
                         } catch (URISyntaxException e) {
                             throw new RuntimeException(e);
                         }
@@ -269,17 +281,11 @@ public class OneBotWebsocket extends WebSocketClient {
 
                     if (msg.equals("是")) {
                         try {
-                            AllowList.checkList(qq, msg);
+                            al.checkList(qq, "-1", this);
                         } catch (URISyntaxException e) {
                             throw new RuntimeException(e);
                         }
                         return;
-                    }
-
-                    try {
-                        AllowList.checkList(qq, "null");
-                    } catch (URISyntaxException e) {
-                        throw new RuntimeException(e);
                     }
 
                     if (msg.equals("查服")) {
@@ -312,7 +318,7 @@ public class OneBotWebsocket extends WebSocketClient {
                         String smspt = String.format("%.3f", mspt);
                         String list2 = "服务器 用内存 " + usedMemory + " MB";
                         list2 = list2 + "\n服务器 余内存 " + freeMemory + " MB";
-                        list2 = list2 + "\n\nTPS  " + tps + " / 20.00";
+                        list2 = list2 + "\n\nTPS    " + tps + " / 20.00";
                         list2 = list2 + "\nMSPT " + smspt;
                         if (1000.0 / mspt > 19.5) {
                             list2 = list2 + "\n·\ud83c\udf40 服务器 状态极佳";
@@ -328,15 +334,17 @@ public class OneBotWebsocket extends WebSocketClient {
                             this.sendG("服里没人");
                         } else {
                             sendG("服里有" + n2c(Bukkit.getOnlinePlayers().size()) + "个人");
+                            Picture.createPic();
                         }
+
                     }
 
-                    if (qq.equals("2963502563") && msg.equals("停一下")) {
+                    if (qq.equals(superUser) && msg.equals("停一下")) {
                         setb();
                         return;
                     }
 
-                    if (qq.equals("2963502563") && msg.equals("好")) {
+                    if (qq.equals(superUser) && msg.equals("好")) {
                         cancellb();
                         return;
                     }
@@ -352,10 +360,23 @@ public class OneBotWebsocket extends WebSocketClient {
                         Bukkit.broadcastMessage("[§e" + card + "§f] " + msg);
                     }
 
-
                     break;
 
                 case "notice":
+
+                    if (json.containsKey("notice_type") && json.get("notice_type").equals("group_decrease")) {
+                        qq = json.get("user_id").toString();
+
+                        List<List<String>> data = FileManager.readCSV(AllowList.file);
+
+                        for (List<String> row : data) {
+                            if (row.get(2).equals(qq)) {
+                                data.remove(row);
+                                FileManager.writeCSV(AllowList.file, data);
+                                sendG("已将 " + row.get(1) + "[" + row.get(2) + "] 从白名单中移除");
+                            }
+                        }
+                    }
 
                     break;
             }
@@ -374,26 +395,27 @@ public class OneBotWebsocket extends WebSocketClient {
     }
 
     public static String n2c(int n) {
-        String[] units = new String[]{"", "十"};
-        String[] digits = new String[]{"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+        String[] digits = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
         if (n == 0) {
             return "零";
-        } else if (n == 2) {
-            return "两";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            int ten = n / 10;
-            int one = n % 10;
-            if (ten > 1) {
-                sb.append(digits[ten]);
-                sb.append(units[1]);
-            }
-
-            if (one > 0) {
-                sb.append(digits[one]);
-            }
-
-            return sb.toString();
         }
+
+        int ten = n / 10;
+        int one = n % 10;
+
+        StringBuilder sb = new StringBuilder();
+
+        if (ten == 1) {
+            sb.append("十"); // 10~19
+        } else if (ten > 1) {
+            sb.append(digits[ten]).append("十");
+        }
+
+        if (one > 0) {
+            sb.append(digits[one]);
+        }
+
+        return sb.toString();
     }
+
 }

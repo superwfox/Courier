@@ -8,7 +8,8 @@ public class LevelManager {
 
         for (List<String> row : data) {
             if (row.get(2).equals(qq)) {
-                return " 当前游戏等级 \n\n   [" + row.get(3) + "]";
+                if (row.get(3).equals("null")) return "你还没有玩过游戏";
+                return " 当前游戏等级 \n[ " + row.get(3) + " L | " + row.get(4) + " 福禄 ]";
             }
         }
 

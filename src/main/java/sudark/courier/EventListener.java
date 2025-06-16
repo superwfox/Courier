@@ -3,12 +3,14 @@ package sudark.courier;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+
+import static sudark.courier.AllowList.QQGroup;
 
 public class EventListener implements Listener {
 
@@ -29,15 +31,14 @@ public class EventListener implements Listener {
 
             if (row.get(0).equals(e.getUniqueId().toString())) {
                 row.set(1, plName);
-                OneBotWebsocket obw = new OneBotWebsocket(new URI("ws://localhost:3001"));
-                obw.sendG(plName + " |检测到你的ID变动 已自动矫正");
+                OneBotWebsocket.sendG(plName + " |检测到你的ID变动 已自动矫正");
                 FileManager.writeCSV(AllowList.file, data);
                 return;
             }
         }
 
         e.setResult(PlayerPreLoginEvent.Result.KICK_WHITELIST);
-        e.setKickMessage("你的游戏ID与数据库不匹\n\n请在群聊使用 “绑定” + 空格 + 游戏ID\n\nQQ群： §e§l571 591 801");
+        e.setKickMessage("你的游戏ID与数据库不匹\n\n请在群聊使用 “绑定” + 空格 + 游戏ID\n\nQQ群： §e§l"+QQGroup);
 
     }
 
@@ -49,14 +50,34 @@ public class EventListener implements Listener {
         List<List<String>> data = FileManager.readCSV(AllowList.file);
 
         for (List<String> row : data) {
-            if (row.get(0).equals(pl.getUniqueId())) {
-                if (row.get(3) == null) {
-                    row.add(pl.getLevel() + "");
-                    return;
+            if (row.get(0).equals(pl.getUniqueId().toString())) {
+                if (row.get(3).equals("null")) {
+                    row.set(3,pl.getLevel() + "");
+                    row.add(pl.getTotalExperience() + "");
+                    break;
                 }
+
                 row.set(3, pl.getLevel() + "");
+                if (row.size() < 5) {
+                    row.add(pl.getTotalExperience() + "");
+                } else {
+                    row.set(4, pl.getTotalExperience() + "");
+                }
+
             }
         }
 
+        FileManager.writeCSV(AllowList.file, data);
+
+    }
+
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent e) throws URISyntaxException {
+        String msg = e.getMessage();
+        String pl = e.getPlayer().getName().replaceAll("\\.", "");
+
+        if (msg.startsWith("#")) {
+            OneBotWebsocket.sendG(" [" + pl + "]\n   " + msg.substring(1));
+        }
     }
 }
