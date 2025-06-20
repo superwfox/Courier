@@ -21,13 +21,13 @@ public class Picture {
         String[] players = Bukkit.getOnlinePlayers().stream()
                 .map(p -> {
                     String name = p.getName();
-                    return length > 6? (name.length() > 11 ? name.substring(0, 11) + ".." : name) : name;
+                    return length > 6 ? (name.length() > 11 ? name.substring(0, 11) + ".." : name) : name;
                 })
                 .toArray(String[]::new);
 
         int rectY = 100;
         int rectX = 50;
-        int width = Math.max(600, players.length * 280 / 6 + 340);
+        int width = Math.max(600, ((players.length - 1) / 6) * 280 + 340);
         int rectWidth = width - 100;
         int baseHeight = 400;
 
