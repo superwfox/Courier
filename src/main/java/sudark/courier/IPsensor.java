@@ -14,31 +14,36 @@ import org.bukkit.entity.Player;
 public class IPsensor {
 
     /**
-     * 通过 ip-api.com 获取 IP 归属地
-     * 返回格式: 国家|省|市
+     * 通过宝塔API获取 IP 归属地
+     * 返回格式: 国家|省|市|区|运营商
      */
     public static String getRegion(String ip) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://ip-api.com/json/" + ip + "?lang=zh-CN"))
+                    .uri(URI.create("https://www.bt.cn/api/panel/get_ip_info?ip=" + ip))
                     .GET()
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+            JsonObject root = JsonParser.parseString(response.body()).getAsJsonObject();
 
-            if ("success".equalsIgnoreCase(json.get("status").getAsString())) {
-                String country = json.get("country").getAsString();
-                String region = json.get("regionName").getAsString();
-                String city = json.get("city").getAsString();
-                return country + "|" + region + "|" + city;
+            if (root.has(ip)) {
+                JsonObject data = root.getAsJsonObject(ip);
+
+                String country = data.get("country").getAsString();
+                String province = data.get("province").getAsString();
+                String city = data.get("city").getAsString();
+                String region = data.get("region").getAsString();
+                String carrier = data.get("carrier").getAsString();
+
+                return country + "|" + province + "|" + city + "|" + region + "|" + carrier;
             } else {
-                return "未知|未知|未知";
+                return "未知|未知|未知|未知|未知";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "未知|未知|未知";
+            return "未知|未知|未知|未知|未知";
         }
     }
 

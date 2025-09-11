@@ -85,10 +85,10 @@ public class EventListener implements Listener {
             System.out.println("无法获取玩家 IP");
         }
 
-        String ipMsg = "[" + getRegion(ip) + "] " + pl.getName();
+        String ipMsg = pl.getName() + "[" + getRegion(ip) + "] ";
         System.out.println(ipMsg);
 
-        OneBotWebsocket.sendP(qq, "您的账号" + ipMsg + "已上线\n\n " +
+        OneBotWebsocket.sendP(qq, "您的账号 " + ipMsg + "已上线\n\n " +
                 "如果这不是你本人操作请发送“BAN”来封禁该IP\n5分钟后无回应将视为正常情况");
         IPS.put(qq, ip);
         Bukkit.getScheduler().runTaskLater(Courier.getPlugin(Courier.class), () -> IPS.remove(qq), 300 * 20L);
