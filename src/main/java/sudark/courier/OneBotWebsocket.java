@@ -8,12 +8,14 @@ import org.bukkit.entity.Player;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
-import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 import static sudark.courier.AllowList.*;
+import static sudark.courier.EventListener.IPS;
+import static sudark.courier.EventListener.bannedIP;
+import static sudark.courier.IPsensor.kickByIP;
 
 public class OneBotWebsocket extends WebSocketClient {
 
@@ -41,7 +43,7 @@ public class OneBotWebsocket extends WebSocketClient {
 
     }
 
-    public void sendP(String user, String message) {
+    public static void sendP(String user, String message) {
         JSONObject connected = new JSONObject();
         JSONObject connectedi = new JSONObject();
         connectedi.put("user_id", user);
@@ -51,7 +53,7 @@ public class OneBotWebsocket extends WebSocketClient {
         connected.put("params", connectedi);
 
         try {
-            this.send(connected.toString());
+            Courier.client.send(connected.toString());
         } catch (Exception var6) {
             Exception e = var6;
             e.printStackTrace();
@@ -189,7 +191,7 @@ public class OneBotWebsocket extends WebSocketClient {
         JSONArray msg = new JSONArray();
         JSONObject qq = new JSONObject();
         JSONObject type = new JSONObject();
-        qq.put("file", "base64://" +base);
+        qq.put("file", "base64://" + base);
         type.put("data", qq);
         type.put("type", "image");
         msg.add(type);
@@ -379,6 +381,25 @@ public class OneBotWebsocket extends WebSocketClient {
                     }
 
                     break;
+            }
+        }
+
+        //确认为私聊
+        if (!(json.containsKey("sender") && json.containsKey("user_id"))) return;
+
+        if (json.getString("message_type").equals("private")) {
+            if (json.getString("raw_message").equals("BAN")) {
+
+                JSONObject sender = json.getJSONObject("sender");
+                String qq = JSONObject.fromObject(sender).getString("user_id");
+
+                if (IPS.get(qq) != null) {
+                    String ip = IPS.get(qq);
+                    bannedIP.add(ip);
+                    kickByIP(ip);
+                    sendP(qq, "已封禁该IP");
+                }
+
             }
         }
 

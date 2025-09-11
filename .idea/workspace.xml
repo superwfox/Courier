@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/IPsensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Picture.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +41,9 @@
     &quot;accountId&quot;: &quot;60d603bc-d834-4e98-bafa-a97ff12be7a9&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -46,6 +56,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Maven.Courier [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Courier [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Courier [package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -208,6 +219,51 @@
       <workItem from="1749649928971" duration="58000" />
       <workItem from="1750039452122" duration="241000" />
       <workItem from="1750422658518" duration="68000" />
+      <workItem from="1750429318356" duration="130000" />
+      <workItem from="1750470441569" duration="27000" />
+      <workItem from="1750474258604" duration="142000" />
+      <workItem from="1750475319393" duration="29000" />
+      <workItem from="1750506324284" duration="833000" />
+      <workItem from="1750507210469" duration="612000" />
+      <workItem from="1751201522740" duration="114000" />
+      <workItem from="1751278218452" duration="10000" />
+      <workItem from="1751344519274" duration="1103000" />
+      <workItem from="1751370800542" duration="733000" />
+      <workItem from="1751452879532" duration="787000" />
+      <workItem from="1752741766306" duration="24000" />
+      <workItem from="1752976335875" duration="54000" />
+      <workItem from="1753154332183" duration="624000" />
+      <workItem from="1753194548170" duration="50000" />
+      <workItem from="1753345508049" duration="217000" />
+      <workItem from="1753345852825" duration="31000" />
+      <workItem from="1753345960703" duration="5449000" />
+      <workItem from="1753361464323" duration="244000" />
+      <workItem from="1753362550246" duration="27000" />
+      <workItem from="1753362630335" duration="54000" />
+      <workItem from="1753362731982" duration="6000" />
+      <workItem from="1753367597455" duration="35000" />
+      <workItem from="1753367660517" duration="26000" />
+      <workItem from="1753367705945" duration="20000" />
+      <workItem from="1753416200109" duration="53000" />
+      <workItem from="1753416547842" duration="24000" />
+      <workItem from="1753424776776" duration="76000" />
+      <workItem from="1753425898951" duration="45000" />
+      <workItem from="1753433622593" duration="15000" />
+      <workItem from="1753519842061" duration="1893000" />
+      <workItem from="1753535872263" duration="136000" />
+      <workItem from="1753689953949" duration="60000" />
+      <workItem from="1754492212599" duration="22000" />
+      <workItem from="1757294422354" duration="367000" />
+      <workItem from="1757295390713" duration="1920000" />
+      <workItem from="1757304272006" duration="28000" />
+      <workItem from="1757305020819" duration="997000" />
+      <workItem from="1757517170965" duration="1298000" />
+      <workItem from="1757518493932" duration="213000" />
+      <workItem from="1757518737757" duration="875000" />
+      <workItem from="1757552159394" duration="924000" />
+      <workItem from="1757565778638" duration="401000" />
+      <workItem from="1757566207924" duration="484000" />
+      <workItem from="1757567168541" duration="274000" />
     </task>
     <task id="LOCAL-00001" summary="Sudark">
       <option name="closed" value="true" />
@@ -241,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750060543084</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <option name="closed" value="true" />
+      <created>1750429383320</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750429383320</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

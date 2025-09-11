@@ -16,6 +16,10 @@ public class AllowList {
     static File file = new File(Bukkit.getPluginManager().getPlugin("Courier").getDataFolder(), "allowlist.csv");
     static ConcurrentHashMap<String, String> ChangeName = new ConcurrentHashMap<>();
 
+    public static File getFile(){
+        return file;
+    }
+
     public void checkFile() {
         File fileFolder = Bukkit.getPluginManager().getPlugin("Courier").getDataFolder();
         if (!fileFolder.exists()) {
@@ -44,6 +48,13 @@ public class AllowList {
             }
         }
 
+        for(List<String> list : data){
+            if(list.get(1).equals(name)){
+                obw.sendG("当前账号已被绑定\n\n   [" + list.get(2) + "]");
+                return;
+            }
+        }
+
         if (ChangeName.containsKey(qq) && name.equals("-1")) {
             for (List<String> list : data) {
                 if (list.get(2).equals(qq)) {
@@ -56,6 +67,7 @@ public class AllowList {
             }
         }
 
+        if (name.equals("-1")) return;
         data.add(List.of("null", name, qq, "null"));
         obw.sendG(" 绑定成功\n\n[" + name + "]");
         FileManager.writeCSV(file, data);

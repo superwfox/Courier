@@ -14,7 +14,7 @@ public class Picture {
 
     public static void createPic() {
 
-        String title = "BEEF-DUNE";
+        String title = "BEEF-OASIS";
         double mspt = Bukkit.getAverageTickTime();
         String footerText = "[TPS: " + String.format("%.1f", Math.min(1000 / mspt, 20)) + " MSPT: " + String.format("%.1f", mspt) + "]";
         int length = Bukkit.getOnlinePlayers().size();
@@ -27,7 +27,7 @@ public class Picture {
 
         int rectY = 100;
         int rectX = 50;
-        int width = Math.max(600, ((players.length - 1) / 6) * 280 + 340);
+        int width = Math.max(600, ((players.length - 1) / 6 + 1) * 320 + 140);
         int rectWidth = width - 100;
         int baseHeight = 400;
 
