@@ -1,4 +1,4 @@
-# Courier
+# Courier | [[English Documention]](https://github.com/superwfox/Courier/blob/master/README_EN.md)
 
 Minecraft Paper 1.21 插件，实现 QQ 群与游戏服务器的双向通信桥接。
 
