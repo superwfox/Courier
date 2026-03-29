@@ -13,8 +13,8 @@ import static sudark.courier.FileManager.readCSV;
 
 public class AllowList {
 
-    static String QQGroup = "1076566686";
-    static String superUser = "2054565750";
+    static String QQGroup = "";
+    static String superUser = "";
     static File file = new File(Bukkit.getPluginManager().getPlugin("Courier").getDataFolder(), "allowlist.csv");
     static ConcurrentHashMap<String, String> ChangeName = new ConcurrentHashMap<>();
 
