@@ -13,8 +13,9 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import static sudark.courier.AllowList.*;
-import static sudark.courier.EventListener.IPS;
-import static sudark.courier.EventListener.bannedIP;
+import static sudark.courier.Courier.get;
+import static sudark.courier.EventListener.*;
+import static sudark.courier.FileManager.getNameByQQ;
 import static sudark.courier.IPsensor.kickByIP;
 
 public class OneBotWebsocket extends WebSocketClient {
@@ -79,8 +80,8 @@ public class OneBotWebsocket extends WebSocketClient {
         type.put("type", "text");
         type.put("data", data);
         contents.add(type);
-        datai.put("nickname", "DOFES");
-        datai.put("user_id", "2963502563");
+        datai.put("uin", "2963502563");
+        datai.put("name", "DOFES");
         datai.put("content", contents);
         typeo.put("type", "node");
         typeo.put("data", datai);
@@ -88,8 +89,8 @@ public class OneBotWebsocket extends WebSocketClient {
         type2.put("type", "text");
         type2.put("data", data2);
         contents2.add(type2);
-        datai2.put("nickname", "DEKUSE");
-        datai2.put("user_id", "2963502563");
+        datai2.put("uin", "2963502563");
+        datai2.put("name", "DEKUSE");
         datai2.put("content", contents2);
         typeo2.put("type", "node");
         typeo2.put("data", datai2);
@@ -97,7 +98,6 @@ public class OneBotWebsocket extends WebSocketClient {
         msg.add(typeo2);
         inner.put("messages", msg);
         inner.put("group_id", QQGroup);
-        inner.put("auto_escape", "false");
         json.put("action", "send_group_forward_msg");
         json.put("params", inner);
 
@@ -212,8 +212,8 @@ public class OneBotWebsocket extends WebSocketClient {
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
 
-        String Conneted = ChatColor.YELLOW + "" + ChatColor.BOLD + "已连接机器人 | Bot Connected";
-        Bukkit.getLogger().info(Conneted);
+        String Conneted = "已连接机器人 | Bot Connected";
+        System.out.println(Conneted);
 
     }
 
@@ -237,44 +237,48 @@ public class OneBotWebsocket extends WebSocketClient {
                     String qq = JSONObject.fromObject(sender).getString("user_id");
 
                     //确定消息内容 msg
-                    String msg = "";
+                    StringBuilder MB = new StringBuilder();
                     JSONArray message = json.getJSONArray("message");
                     for (int i = 0; i < message.size(); i++) {
                         JSONObject obj = message.getJSONObject(i);
                         String type = obj.optString("type");
                         switch (type) {
                             case "text":
-                                msg += obj.getJSONObject("data").getString("text");
+                                MB.append(obj.getJSONObject("data").getString("text"));
                                 break;
                             case "face":
-                                msg += "[§b表情§f]";
+                                MB.append("[§b表情§f]");
                                 break;
                             case "image":
-                                msg += "[§b图片§f]";
+                                MB.append("[§b图片§f]");
                                 break;
                             case "at":
                                 String nickname = obj.getJSONObject("data").getString("name");
-                                msg += "§6§l@" + nickname + "§r§f";
+                                MB.append("[§b@" + nickname + "§f]");
                                 break;
                             case "reply":
-                                msg += "[§b回复§f]";
+                                MB.append("[§b回复§f]");
                                 break;
                             case "video":
-                                msg += "[§b视频§f]";
+                                MB.append("[§b视频§f]");
                                 break;
                             default:
-                                msg += "%";
+                                MB.append("[§b未知消息§f]");
                         }
                     }
+                    String msg = MB.toString();
 
                     if (msg.startsWith("c/") && qq.equals(superUser)) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), msg.substring(2));
+                        String cmd = msg.substring(2);
+                        Bukkit.getScheduler().runTask(get(), () ->
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd)
+                        );
                         return;
                     }
 
                     if (msg.startsWith("绑定 ")) {
                         try {
-                            al.checkList(qq, msg.substring(3), this);
+                            al.checkList(qq, msg.substring(3), this, true);
                         } catch (URISyntaxException e) {
                             throw new RuntimeException(e);
                         }
@@ -283,7 +287,7 @@ public class OneBotWebsocket extends WebSocketClient {
 
                     if (msg.equals("是")) {
                         try {
-                            al.checkList(qq, "-1", this);
+                            al.checkList(qq, "-1", this, true);
                         } catch (URISyntaxException e) {
                             throw new RuntimeException(e);
                         }
@@ -388,19 +392,45 @@ public class OneBotWebsocket extends WebSocketClient {
         if (!(json.containsKey("sender") && json.containsKey("user_id"))) return;
 
         if (json.getString("message_type").equals("private")) {
-            if (json.getString("raw_message").equals("BAN")) {
+            JSONObject sender = json.getJSONObject("sender");
+            String qq = JSONObject.fromObject(sender).getString("user_id");
+            String msg = json.getString("raw_message");
 
-                JSONObject sender = json.getJSONObject("sender");
-                String qq = JSONObject.fromObject(sender).getString("user_id");
+            if (msg.startsWith("绑定 ")) {
+                try {
+                    al.checkList(qq, msg.substring(3), this, false);
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
+                return;
+            }
 
+            if (msg.equals("是")) {
+                try {
+                    al.checkList(qq, "-1", this, false);
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
+                return;
+            }
+
+            if (msg.equals("BAN")) {
                 if (IPS.get(qq) != null) {
                     String ip = IPS.get(qq);
                     bannedIP.add(ip);
                     kickByIP(ip);
                     sendP(qq, "已封禁该IP");
                 }
-
+                return;
             }
+
+            String name = getNameByQQ(qq);
+            //System.out.print("收到" + qq + " | " + name + " 消息：" + msg);
+            if (name != null) {
+                Names.add(name);
+            }
+
+
         }
 
     }

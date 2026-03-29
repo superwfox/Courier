@@ -1,9 +1,11 @@
 package sudark.courier;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -15,15 +17,18 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.bukkit.plugin.java.JavaPlugin.getPlugin;
 import static sudark.courier.AllowList.QQGroup;
+import static sudark.courier.Courier.get;
 import static sudark.courier.IPsensor.getRegion;
 
 public class EventListener implements Listener {
 
-    static Map<String, String> IPS = new HashMap<>();
-    static Set<String> bannedIP = new HashSet<>();
+    static Map<String, String> IPS = new ConcurrentHashMap<>();
+    static Set<String> bannedIP = ConcurrentHashMap.newKeySet();
+    static Set<String> Names = ConcurrentHashMap.newKeySet();
 
     @EventHandler
     public void onPlayerJoin(PlayerPreLoginEvent e) {
@@ -69,29 +74,48 @@ public class EventListener implements Listener {
         }.runTaskTimer(getPlugin(Courier.class), 10L, 10L);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void checkPlayerIdentity(PlayerJoinEvent e) {
         Player pl = e.getPlayer();
-        if (pl.hasMetadata("ONLINE")) return;
-        NamespacedKey key = new NamespacedKey("sudark", "qq");
-        String qq = pl.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-        if (IPS.containsKey("qq")) return;
+        Bukkit.getScheduler().runTaskLater(get(), () ->
+        {
+            if (pl.hasMetadata("ONLINE")) {
+                pl.removeMetadata("ONLINE", get());
+                return;
+            }
 
-        String ip = "";
-        InetSocketAddress socketAddress = pl.getAddress();
-        if (socketAddress != null && socketAddress.getAddress() != null) {
-            ip = socketAddress.getAddress().getHostAddress();
-        } else {
-            System.out.println("无法获取玩家 IP");
-        }
+            NamespacedKey key = new NamespacedKey("sudark", "qq");
+            String qq = pl.getPersistentDataContainer().get(key, PersistentDataType.STRING);
+            if (qq == null || qq.isBlank()) {
+                System.out.println("§7无法获取玩家绑定 QQ: " + pl.getName());
+                return;
+            }
+            if (IPS.containsKey(qq)) return;
 
-        String ipMsg = pl.getName() + "[" + getRegion(ip) + "] ";
-        System.out.println(ipMsg);
+            String ip = "";
+            InetSocketAddress socketAddress = pl.getAddress();
+            if (socketAddress != null && socketAddress.getAddress() != null) {
+                ip = socketAddress.getAddress().getHostAddress();
+            } else {
+                System.out.println("§7无法获取玩家 IP: " + pl.getName());
+                return;
+            }
 
-        OneBotWebsocket.sendP(qq, "您的账号 " + ipMsg + "已上线\n\n " +
-                "如果这不是你本人操作请发送“BAN”来封禁该IP\n5分钟后无回应将视为正常情况");
-        IPS.put(qq, ip);
-        Bukkit.getScheduler().runTaskLater(Courier.getPlugin(Courier.class), () -> IPS.remove(qq), 300 * 20L);
+            String playerName = pl.getName();
+            Bukkit.getScheduler().runTaskAsynchronously(get(), () -> {
+                String ipMsg = playerName + "[" + getRegion(ip) + "] ";
+                System.out.println(ipMsg);
+                OneBotWebsocket.sendP(qq, "您的账号 " + ipMsg + "已上线\n\n" +
+                        "如果这不是你本人操作请发送“BAN”来封禁该IP\n5分钟后无回应将视为正常情况");
+                IPS.put(qq, ip);
+                Bukkit.getScheduler().runTaskLater(Courier.getPlugin(Courier.class), () -> IPS.remove(qq), 300 * 20L);
+                Bukkit.getScheduler().runTask(get(), () -> {
+                    if (!Names.contains(playerName) && pl.isOnline()) {
+                        pl.kick(Component.text("§l现在无法进入游戏 请查看群公告\n\n只有§e离线玩家§f能看到这条消息\n\nQQ群： §e§l" + QQGroup));
+                    }
+                });
+            });
+        }, 1L);
 
     }
 

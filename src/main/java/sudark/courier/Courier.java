@@ -1,6 +1,7 @@
 package sudark.courier;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.java_websocket.client.WebSocketClient;
 
@@ -9,7 +10,7 @@ import java.net.URISyntaxException;
 
 public final class Courier extends JavaPlugin {
 
-    public static WebSocketClient client ;
+    public static WebSocketClient client;
     public static URI uri;
 
     static {
@@ -18,6 +19,10 @@ public final class Courier extends JavaPlugin {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Plugin get() {
+        return Bukkit.getPluginManager().getPlugin("Courier");
     }
 
     @Override

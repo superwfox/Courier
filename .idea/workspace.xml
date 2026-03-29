@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java" />
+    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/IPsensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/IPsensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +62,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sudark/Desktop/plugims/courier-1.0-SNAPSHOT.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sudark/IdeaProjects/ForceTrade&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -256,6 +265,75 @@
       <workItem from="1757566207924" duration="484000" />
       <workItem from="1757567168541" duration="274000" />
       <workItem from="1757568689279" duration="148000" />
+      <workItem from="1757595333383" duration="189000" />
+      <workItem from="1757595927843" duration="22000" />
+      <workItem from="1757680185275" duration="1217000" />
+      <workItem from="1758432606378" duration="719000" />
+      <workItem from="1759415639614" duration="4000" />
+      <workItem from="1760103767163" duration="63000" />
+      <workItem from="1760103857761" duration="2000" />
+      <workItem from="1760107053048" duration="9000" />
+      <workItem from="1760852383591" duration="52000" />
+      <workItem from="1761996661102" duration="413000" />
+      <workItem from="1761997096705" duration="179000" />
+      <workItem from="1762096768568" duration="1388000" />
+      <workItem from="1762099450000" duration="369000" />
+      <workItem from="1762132946267" duration="182000" />
+      <workItem from="1762492781223" duration="12000" />
+      <workItem from="1762492814406" duration="12000" />
+      <workItem from="1762515262185" duration="143000" />
+      <workItem from="1762515416369" duration="39000" />
+      <workItem from="1762515528913" duration="89000" />
+      <workItem from="1762517385868" duration="6000" />
+      <workItem from="1762521526902" duration="30000" />
+      <workItem from="1762525265845" duration="31000" />
+      <workItem from="1762564446341" duration="17000" />
+      <workItem from="1762564851767" duration="11000" />
+      <workItem from="1762579751744" duration="223000" />
+      <workItem from="1762581415856" duration="41000" />
+      <workItem from="1762582069806" duration="8000" />
+      <workItem from="1762586912784" duration="197000" />
+      <workItem from="1762587868661" duration="8000" />
+      <workItem from="1762588044477" duration="9000" />
+      <workItem from="1763785206971" duration="123000" />
+      <workItem from="1763785695088" duration="208000" />
+      <workItem from="1763819194412" duration="269000" />
+      <workItem from="1766017904345" duration="1779000" />
+      <workItem from="1767425887109" duration="245000" />
+      <workItem from="1768704360516" duration="43000" />
+      <workItem from="1768792584880" duration="268000" />
+      <workItem from="1768793302624" duration="1358000" />
+      <workItem from="1768795416793" duration="724000" />
+      <workItem from="1768796227480" duration="215000" />
+      <workItem from="1768796525543" duration="26000" />
+      <workItem from="1768796582802" duration="663000" />
+      <workItem from="1768798051591" duration="74000" />
+      <workItem from="1768798541881" duration="80000" />
+      <workItem from="1768799204148" duration="118000" />
+      <workItem from="1768799539681" duration="46000" />
+      <workItem from="1768799793812" duration="31000" />
+      <workItem from="1768800015025" duration="143000" />
+      <workItem from="1768800390005" duration="244000" />
+      <workItem from="1768800871982" duration="46000" />
+      <workItem from="1768801006286" duration="147000" />
+      <workItem from="1768801169872" duration="360000" />
+      <workItem from="1768801627140" duration="369000" />
+      <workItem from="1768802097961" duration="205000" />
+      <workItem from="1768871898575" duration="67000" />
+      <workItem from="1769771434369" duration="710000" />
+      <workItem from="1769825336392" duration="1595000" />
+      <workItem from="1769859101456" duration="4000" />
+      <workItem from="1769861648049" duration="11000" />
+      <workItem from="1769861867554" duration="9000" />
+      <workItem from="1769861999240" duration="10000" />
+      <workItem from="1769862434518" duration="11000" />
+      <workItem from="1769862521914" duration="134000" />
+      <workItem from="1769867380029" duration="904000" />
+      <workItem from="1772630907187" duration="52000" />
+      <workItem from="1772860784410" duration="12000" />
+      <workItem from="1774580733107" duration="293000" />
+      <workItem from="1774678236885" duration="29000" />
+      <workItem from="1774747696522" duration="723000" />
     </task>
     <task id="LOCAL-00001" summary="Sudark">
       <option name="closed" value="true" />
@@ -305,7 +383,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757568698053</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+      <option name="closed" value="true" />
+      <created>1757595455766</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1757595455766</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

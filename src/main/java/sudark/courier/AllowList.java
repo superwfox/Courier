@@ -1,6 +1,8 @@
 package sudark.courier;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -11,14 +13,10 @@ import static sudark.courier.FileManager.readCSV;
 
 public class AllowList {
 
-    static String QQGroup = "1007142639";
-    static String superUser = "2963502563";
+    static String QQGroup = "1076566686";
+    static String superUser = "2054565750";
     static File file = new File(Bukkit.getPluginManager().getPlugin("Courier").getDataFolder(), "allowlist.csv");
     static ConcurrentHashMap<String, String> ChangeName = new ConcurrentHashMap<>();
-
-    public static File getFile(){
-        return file;
-    }
 
     public void checkFile() {
         File fileFolder = Bukkit.getPluginManager().getPlugin("Courier").getDataFolder();
@@ -34,43 +32,55 @@ public class AllowList {
         }
     }
 
-    public void checkList(String qq, String name, OneBotWebsocket obw) throws URISyntaxException {
+    public void checkList(String qq, String name, OneBotWebsocket obw, boolean GroupMsg) throws URISyntaxException {
         List<List<String>> data = readCSV(file);
 
-        if (!name.equals("-1")) {
-            for (List<String> list : data) {
-                if (list.get(2).equals(qq)) {
-                    obw.sendG("当前账号已绑定\n\n   [" + list.get(1) + "]");
-                    obw.sendG(" 若要更换请发送 “是” ");
-                    ChangeName.put(qq, name);
-                    return;
-                }
-            }
-        }
+        String pendingName = ChangeName.get(qq);
 
-        for(List<String> list : data){
-            if(list.get(1).equals(name)){
-                obw.sendG("当前账号已被绑定\n\n   [" + list.get(2) + "]");
+        for (List<String> list : data) {
+            String n = list.get(1);
+            String q = list.get(2);
+
+            if (q.equals(qq)) { // 找到当前QQ
+                if (!name.equals("-1")) { // 有新名字要替换
+                    sendMsg(obw, "当前账号已被绑定\n\n   [" + n + "]", GroupMsg, qq);
+                    sendMsg(obw, "若要更换 请发送：是", GroupMsg, qq);
+                    ChangeName.put(qq, name);
+                } else if (pendingName != null) { // 确认更换
+                    for (List<String> l : data) {
+                        if (l.get(1).equals(pendingName)) {
+                            sendMsg(obw, "当前账号已被绑定\n\n   [" + l.get(2) + "]", GroupMsg, qq);
+                            return;
+                        }
+                    }
+                    sendMsg(obw, "已经删除\n[" + n + "]\n并替换为\n[" + pendingName + "]", GroupMsg, qq);
+                    Player p = Bukkit.getPlayer(n);
+                    if (p != null && p.isOnline()) {
+                        p.kick(Component.text("为了保证数据安全 自动为您退出游戏"));
+                    }
+                    list.set(1, pendingName);
+                    ChangeName.remove(qq);
+                    FileManager.writeCSV(file, data);
+                }
                 return;
             }
         }
 
-        if (ChangeName.containsKey(qq) && name.equals("-1")) {
-            for (List<String> list : data) {
-                if (list.get(2).equals(qq)) {
-                    obw.sendG("已经删除\n[" + list.get(1) + "]\n并替换为\n[" + ChangeName.get(qq) + "]");
-                    list.set(1, ChangeName.get(qq));
-                    ChangeName.remove(qq);
-                    FileManager.writeCSV(file, data);
-                    return;
-                }
-            }
+        // 没找到QQ记录
+        if (!name.equals("-1")) {
+            data.add(List.of("null", name, qq, "null"));
+            sendMsg(obw, " 绑定成功\n\n[" + name + "]", GroupMsg, qq);
+            FileManager.writeCSV(file, data);
         }
-
-        if (name.equals("-1")) return;
-        data.add(List.of("null", name, qq, "null"));
-        obw.sendG(" 绑定成功\n\n[" + name + "]");
-        FileManager.writeCSV(file, data);
     }
+
+    public static void sendMsg(OneBotWebsocket obw, String msg, boolean GroupMsg, String qq) {
+        if (GroupMsg) {
+            obw.sendG(msg);
+        } else {
+            obw.sendP(qq, msg);
+        }
+    }
+
 
 }

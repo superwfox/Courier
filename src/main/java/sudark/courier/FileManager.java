@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sudark.courier.AllowList.file;
+
 public class FileManager {
     //读文件
     public static List<List<String>> readCSV(File file) {
@@ -38,5 +40,13 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getNameByQQ(String qq) {
+        List<List<String>> data = readCSV(file);
+        for (List<String> row : data)
+            if (row.get(2).equals(qq))
+                return row.get(1);
+        return null;
     }
 }
