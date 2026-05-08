@@ -102,19 +102,22 @@ public class EventListener implements Listener {
             }
 
             String playerName = pl.getName();
-            Bukkit.getScheduler().runTaskAsynchronously(get(), () -> {
-                String ipMsg = playerName + "[" + getRegion(ip) + "] ";
-                System.out.println(ipMsg);
-                OneBotWebsocket.sendP(qq, "您的账号 " + ipMsg + "已上线\n\n" +
-                        "如果这不是你本人操作请发送“BAN”来封禁该IP\n5分钟后无回应将视为正常情况");
-                IPS.put(qq, ip);
-                Bukkit.getScheduler().runTaskLater(Courier.getPlugin(Courier.class), () -> IPS.remove(qq), 300 * 20L);
-                Bukkit.getScheduler().runTask(get(), () -> {
-                    if (!Names.contains(playerName) && pl.isOnline()) {
-                        pl.kick(Component.text("§l现在无法进入游戏 请查看群公告\n\n只有§e离线玩家§f能看到这条消息\n\nQQ群： §e§l" + QQGroup));
-                    }
-                });
-            });
+            if (!Names.contains(playerName) && pl.isOnline()) {
+                pl.kick(Component.text("§l现在无法进入游戏 请查看群公告\n\n只有§e离线玩家§f能看到这条消息\n\nQQ群： §e§l" + QQGroup));
+            }
+            Bukkit.getScheduler().runTaskLater(Courier.getPlugin(Courier.class), () -> IPS.remove(qq), 300 * 20L);
+            IPS.put(qq, ip);
+
+//            Bukkit.getScheduler().runTaskAsynchronously(get(), () -> {
+//                String ipMsg = playerName + "[" +  + "] ";
+//                System.out.println(ipMsg);
+//                OneBotWebsocket.sendP(qq, "您的账号 " + ipMsg + "已上线\n\n" +
+//                        "如果这不是你本人操作请发送“BAN”来封禁该IP\n5分钟后无回应将视为正常情况");
+//
+//
+//                Bukkit.getScheduler().runTask(get(), () -> {
+//                });
+//            });
         }, 1L);
 
     }

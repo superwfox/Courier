@@ -23,7 +23,6 @@ public class IPsensor {
     private static final HttpClient CLIENT = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(5))
             .build();
-
     /**
      * 通过 ip9 获取 IP 归属地
      * 返回格式: 国家|省|市|区|运营商
@@ -76,6 +75,7 @@ public class IPsensor {
             return DEFAULT_REGION;
         }
     }
+
 
     private static String getSafeString(JsonObject obj, String key) {
         if (obj == null || key == null || !obj.has(key) || obj.get(key).isJsonNull()) {

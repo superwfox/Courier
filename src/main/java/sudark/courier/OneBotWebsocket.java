@@ -437,12 +437,24 @@ public class OneBotWebsocket extends WebSocketClient {
 
     @Override
     public void onClose(int i, String s, boolean b) {
-
+        retry();
     }
 
     @Override
     public void onError(Exception e) {
 
+    }
+
+    private void retry() {
+        if (!this.isOpen()) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                }
+                this.reconnect();
+            }).start();
+        }
     }
 
     public static String n2c(int n) {

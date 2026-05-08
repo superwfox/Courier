@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/sudark/courier/OneBotWebsocket.java">
+    <list default="true" id="3a5c225f-6c15-4ad3-9f86-01d7be828b14" name="Changes" comment="Add README, optimize binding &amp; IP check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/AllowList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/Courier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/EventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/IPsensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/IPsensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudark/courier/OneBotWebsocket.java" afterDir="false" />
     </list>
@@ -55,6 +52,9 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.IPsensor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IPsensor.test.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Courier [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Courier [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Courier [package].executor&quot;: &quot;Run&quot;,
@@ -79,7 +79,49 @@
       <recent name="C:\Users\Sudark\IdeaProjects\Courier\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.test">
+    <configuration name="IPsensor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sudark.courier.IPsensor" />
+      <module name="Courier" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudark.courier.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sudark.courier.test" />
+      <module name="Courier" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudark.courier.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IPsensor.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Courier" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudark.courier.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudark.courier" />
+      <option name="MAIN_CLASS_NAME" value="sudark.courier.IPsensor" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Courier package" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -110,6 +152,13 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.IPsensor" />
+        <item itemvalue="JUnit.IPsensor.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -334,6 +383,14 @@
       <workItem from="1774580733107" duration="293000" />
       <workItem from="1774678236885" duration="29000" />
       <workItem from="1774747696522" duration="723000" />
+      <workItem from="1774763043405" duration="16000" />
+      <workItem from="1774964257969" duration="183000" />
+      <workItem from="1777290547479" duration="26000" />
+      <workItem from="1777290624968" duration="677000" />
+      <workItem from="1777350179262" duration="80000" />
+      <workItem from="1777729090187" duration="627000" />
+      <workItem from="1777769579413" duration="13000" />
+      <workItem from="1777769999383" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="Sudark">
       <option name="closed" value="true" />
